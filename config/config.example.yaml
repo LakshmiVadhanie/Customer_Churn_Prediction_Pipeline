@@ -1,0 +1,55 @@
+environment: local  # local | production
+
+aws:
+  region: us-east-1
+  s3_bucket: your-churn-prediction-bucket
+  s3_logs_prefix: raw/customer_logs/
+  s3_features_prefix: processed/features/
+  s3_model_prefix: models/
+
+hadoop:
+  namenode: hdfs://localhost:9000
+  mapreduce_input: /user/hadoop/churn/logs/
+  mapreduce_output: /user/hadoop/churn/features/
+  num_reducers: 4
+
+hive:
+  host: localhost
+  port: 10000
+  database: churn_db
+  raw_table: customer_logs
+  feature_table: churn_features
+
+spark:
+  master: local[*]  # or yarn for cluster
+  app_name: ChurnPredictionPipeline
+  executor_memory: 4g
+  driver_memory: 2g
+  num_partitions: 200
+  model_path: models/gbt_churn_model
+
+model:
+  num_trees: 150
+  max_depth: 6
+  learning_rate: 0.1
+  subsample_rate: 0.8
+  feature_subset_strategy: sqrt
+  seed: 42
+  train_split: 0.8
+  churn_window_days: 30
+  churn_threshold: 0.5
+
+data:
+  num_records: 2000000
+  num_segments: 12
+  local_data_path: data/sample/
+
+dashboard:
+  host: 0.0.0.0
+  port: 5000
+  debug: false
+  model_path: models/gbt_churn_model
+
+logging:
+  level: INFO
+  file: logs/pipeline.log
