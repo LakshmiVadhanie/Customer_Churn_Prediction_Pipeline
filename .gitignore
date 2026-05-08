@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.venv/
+venv/
+env/
+
+# Data and models
+data/sample/
+data/processed/
+models/
+*.pkl
+*.parquet
+*.csv
+!data/.gitkeep
+
+# Logs
+logs/
+*.log
+
+# Config (sensitive)
+config/config.yaml
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# AWS
+.aws/
+*.pem
+
+# Hadoop
+hadoop-streaming*.jar
