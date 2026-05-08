@@ -49,4 +49,4 @@ jobs:
       - name: Install linting tools
         run: pip install flake8
       - name: Run flake8
-        run: flake8 src/ dashboard/ tests/ --max-line-length=110 --ignore=E501,W503
+        run: flake8 src/ dashboard/ tests/ --max-line-length=110 --ignore=E501,W503,W504
